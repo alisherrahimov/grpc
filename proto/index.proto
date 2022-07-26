@@ -1,0 +1,61 @@
+syntax = "proto3";
+import "./auth.proto";
+service UserService {
+    rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+    rpc GetUsers(GetUsersRequest) returns (GetUsersResponse) {}
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
+
+}
+
+message FileStreamRequestMessage{
+}
+
+message FileStreamResponseMessage{
+    string id = 1;
+    bytes data = 2;
+}
+
+
+message GetUserRequest{
+    string id = 0;
+    
+}
+message ChatRequestMessage{
+    string msg = 1;
+}
+message ChatResponseMessage{
+    string name = 0;
+    string msg = 1;
+}
+message CreateUserRequest{
+    string id = 0;
+    string name = 1;
+    string email = 2;
+    string password = 3;
+    string phone =4;
+    int32 age=5;
+}
+message CreateUserResponse{
+    string id = 0;
+    string name = 1;
+    string email = 2;
+    string password = 3;
+    string phone =4;
+    int32 age=5;
+}
+
+message GetUserResponse{
+    string id = 0;
+    string name=1;
+    string email=2;
+    string password=3;
+    string phone=4;
+    int32 age=5;
+}
+message GetUsersRequest{
+    int32 limit=1;
+}
+
+message GetUsersResponse{
+    repeated GetUserResponse users=1;
+}
